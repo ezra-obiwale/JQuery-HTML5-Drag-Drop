@@ -70,6 +70,9 @@ All functions, with the exception of `drop` and `sorted`, have two parameters wh
 ## Examples
 See the [index.html](https://github.com/ezra-obiwale/JQuery-HTML5-Drag-Drop/blob/master/index.html)
 
+## Demo
+See [here](http://localhost/ezra-obiwale.github.io/jquery-html5-drag-drop/)
+
 ## Further reading
  https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/
 
