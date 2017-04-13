@@ -13,7 +13,9 @@ Provides easy drag and drop features with HTML5
 #### Draggable
 - **dragImage** *(string|object)*
   This is the image to display when dragging.
+  
   If value is string, it is the path to the image file.
+  
   If value is object, it has keys `src`, `offsetX`, `offsetY` where the last two are where the image should appear relative to the mouse pointer
 
 - **dropEffect** *(string)*
@@ -21,7 +23,8 @@ Provides easy drag and drop features with HTML5
   Values may be any of `none`, `move`, `copy` and `link`
 
 - **effectAllowed** *(string)*
-  Provides all types of operations possible
+  Provides all types of operations possible.
+  
   Values may be any of `none`, `move`, `copy`, `link`, `copyMove`, `copyLink`, `linkMove`, and `all`
 
 - **sortable** *(boolean)*
@@ -64,7 +67,9 @@ Provides easy drag and drop features with HTML5
 
 ### About Functions
 All functions, with the exception of `drop` and `sorted`, have two parameters which are the event and DataTransfer objects.
+
 `drop` takes three parameters - the dropped element, the event object and the DataTransfer object.
+
 `sorted` takes only one parameter which is the draggable element on which the sorted element was dropped.
 
 ## Examples
