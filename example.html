@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JQuery HTML5 Drag and Drop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                margin:0;
+                position:relative;
+            }
+            .panel {
+                height:100%;
+                width:100%;
+                background-color:green;
+            }
+            .panel>* {
+                text-align: center;
+                padding:100px;
+                border:1px solid;
+                float:left;
+                margin:5px;
+                background-color:white;
+                color:black;
+                font-weight:bold;
+            }
+            .droppable {
+                position: absolute;
+                bottom:0;
+                left:0;
+                width:100%;
+                height:50%;
+                background-color:yellow;
+            }
+            .inverse {
+                background-color:black;
+                color:white;
+            }
+            .primary {
+                background-color:blue;
+                color:white;
+            }
+            .danger {
+                background-color:red;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="panel-one" class="panel">
+            <div class="draggable inverse">
+                ELEMENT #1
+            </div>
+            <div class="draggable primary">
+                ELEMENT #2
+            </div>
+            <div class="draggable danger">
+                ELEMENT #3
+            </div>
+        </div>
+        <div class="droppable"></div>
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="jquery-html5-drag-drop.js"></script>
+        <script>
+            $('.draggable').draggable({
+                enter: function () {
+
+                },
+                drop: function (dragged, e) {
+                }
+            })
+                    .on('sorted', function (e, after) {
+                        console.log(this, after);
+                    });
+//            $('.droppable,.panel').droppable({
+//                drop: function (e, dt) {
+//                    dt.dropEffect = 'move';
+//                    console.log(e, dt);
+//                },
+//                over: function (e) {
+//                }
+//            });
+        </script>
+    </body>
+</html>
