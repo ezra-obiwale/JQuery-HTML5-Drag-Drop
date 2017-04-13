@@ -31,7 +31,7 @@
                 if (config.effectAllowed) {
                     dataTransfer.effectAllowed = config.effectAllowed;
                 }
-                var resp = config.drop.call(this, dataTransfer.getData('text'), e, dataTransfer);
+                var resp = config.drop.call(this, $(dataTransfer.getData('text')).get(0), e, dataTransfer);
                 // allow drop of not canceled
                 if (false !== resp) {
                     e.preventDefault();
@@ -40,7 +40,6 @@
             };
     $.fn.draggable = function (config) {
         config = $.extend({
-            sortable: true,
             /* 
              * {object[src,offsetX,offsetY]} || {string} path/to/image
              * offsets are where the image should appear relative to the mouse pointer
@@ -56,8 +55,12 @@
              * Values may include none|move|copy|link|copyMove|copyLink|linkMove|all
              */
             effectAllowed: 'all',
+            /**
+             * Indicates that draggable items are also sortable
+             */
+            sortable: true,
             /* Fired when an element or text selection is being dragged. */
-            drag: function () {},
+            drag: function (e) {},
             /* Fired when the user starts dragging an element or text selection. */
             start: function () {},
             /* Fired when a drag operation is being ended (for example, 
@@ -79,7 +82,13 @@
                 e.preventDefault();
             },
             /* Fired when an element or text selection is dropped on a valid drop target. */
-            drop: function () {}
+            drop: function () {},
+            /*
+             * Fired when an element has been sorted
+             */
+            sorted: function (e, selector) {
+
+            }
         }, config);
         return this.each(function () {
             $(this).attr('draggable', true)
@@ -144,7 +153,7 @@
                         .on('drop', function (e) {
                             var $dragged = $(e.originalEvent.dataTransfer.getData('text'));
                             $(this).before($dragged);
-                            $dragged.trigger('sorted', [this]);
+                            config.sorted.call($dragged.get(0), this);
                             return drop.call(this, config, e);
                         });
             }

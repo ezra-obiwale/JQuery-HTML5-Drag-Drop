@@ -30,7 +30,7 @@
                 color:black;
                 font-weight:bold;
             }
-            .droppable {
+            .droppable:not(#panel-one) {
                 position: absolute;
                 bottom:0;
                 left:0;
@@ -64,28 +64,16 @@
                 ELEMENT #3
             </div>
         </div>
-        <div class="droppable"></div>
+        <div class="panel droppable"></div>
         <script src="jquery-3.2.1.min.js"></script>
         <script src="jquery-html5-drag-drop.js"></script>
         <script>
-            $('.draggable').draggable({
-                enter: function () {
-
-                },
-                drop: function (dragged, e) {
+            $('.draggable').draggable();
+            $('.droppable').droppable({
+                drop: function (dropped) {
+                    $(this).append(dropped);
                 }
-            })
-                    .on('sorted', function (e, after) {
-                        console.log(this, after);
-                    });
-//            $('.droppable,.panel').droppable({
-//                drop: function (e, dt) {
-//                    dt.dropEffect = 'move';
-//                    console.log(e, dt);
-//                },
-//                over: function (e) {
-//                }
-//            });
+            });
         </script>
     </body>
 </html>
